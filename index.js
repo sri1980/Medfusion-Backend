@@ -62,8 +62,8 @@ const cognito = new AWS.CognitoIdentityServiceProvider();
 
 // Set AWS credentials (this is optional if you are using environment variables or an IAM role)
 AWS.config.update({
-    accessKeyId: "AKIAQKPILYINTE2HWWMB",
-    secretAccessKey: "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",
+    accessKeyId: "AKIAQKPILYINSKUD747N",
+    secretAccessKey: "tIyROAHpnCgxXtHMCB2ZRyEJY8MbgW5wI7qkKhrR",
     region: 'us-east-2' // Replace with your region
 });
 
