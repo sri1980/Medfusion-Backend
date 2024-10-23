@@ -1045,16 +1045,16 @@ async function loadDataFromS3() {
 }
 
 // Start the server after loading S3 data
-/*async function startServer() {
+async function startServer() {
     try {
         // Load S3 data before starting the server
         await loadDataFromS3();
     } catch (error) {
         console.error('Failed to start the server:', error);
     }
-}*/
+}
 
-//startServer();
+startServer();
 
 // Start the server
 app.listen(port, () => {
