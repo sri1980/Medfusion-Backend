@@ -1,0 +1,6 @@
+{
+  "common": {
+    "log_level": "ERROR",
+    "log_path": "log"
+  }
+}
