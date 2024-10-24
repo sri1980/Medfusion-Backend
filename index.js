@@ -1059,12 +1059,12 @@ async function loadDataFromS3() {
 }
 
 async function startServer() {
-    try {
+    /*try {
         await loadDataFromS3();
     } catch (error) {
         console.error('Failed to load data from S3:', error.message);
         console.error('Proceeding to start the server anyway...');
-    }
+    }*/
 
     // Start the server regardless of whether S3 data loaded
     app.listen(port, () => {
