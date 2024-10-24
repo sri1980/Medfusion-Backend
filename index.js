@@ -61,11 +61,11 @@ AWS.config.update({
 const cognito = new AWS.CognitoIdentityServiceProvider();
 
 // Set AWS credentials (this is optional if you are using environment variables or an IAM role)
-AWS.config.update({
-    accessKeyId: "AKIAQKPILYINSKUD747N",
-    secretAccessKey: "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",
+/*AWS.config.update({
+    accessKeyId: "AKIAQKPILYIN3WOZWBSK",
+    secretAccessKey: "1Mph1RWCmA5TMsw8tsKwiKn79qLHvuFQZAUZZ6Gc",
     region: 'us-east-2' // Replace with your region
-});
+});*/
 
 const USER_POOL_ID = 'us-east-2_ZUmy7Bcey';  // Replace with your User Pool ID
 const CLIENT_ID = '5gvo2kgmh9meh0dsau0l31ha12';   // Replace with your App Client ID
@@ -1030,6 +1030,7 @@ app.get('/snomed-codes', async (req, res) => {
 
 // Function to load data from S3 at server startup
 async function loadDataFromS3() {
+    console.log('attempting to connect to reference data bucket');
     try {
         const data = await getObjectAsync({
             Bucket: 'medfusion-referencedata',
