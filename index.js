@@ -1008,7 +1008,20 @@ app.get('/draft-orders', async (req, res) => {
     }
 });
 
-const getObjectAsync = promisify(s3.getObject).bind(s3);
+
+
+async function getObjectAsync(params) {
+    return new Promise((resolve, reject) => {
+        s3.getObject(params, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+
 // API endpoint to get items
 app.get('/snomed-codes', async (req, res) => {
     const query = req.query.searchQuery?.toLowerCase() || '';
@@ -1045,19 +1058,23 @@ async function loadDataFromS3() {
     }
 }
 
-// Start the server after loading S3 data
 async function startServer() {
     try {
-        // Load S3 data before starting the server
         await loadDataFromS3();
     } catch (error) {
-        console.error('Failed to start the server:', error);
+        console.error('Failed to load data from S3:', error.message);
+        console.error('Proceeding to start the server anyway...');
     }
+
+    // Start the server regardless of whether S3 data loaded
+    app.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+    });
 }
 
 startServer();
 
 // Start the server
-app.listen(port, () => {
+/*app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
-});
+});*/
